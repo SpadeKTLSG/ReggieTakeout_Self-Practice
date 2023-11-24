@@ -1,2 +1,22 @@
+.classpath
+.factorypath
+.project
+.settings
 
-# 
+### IntelliJ IDEA ###
+.idea
+*.iml
+*.iws
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+.nb-gradle/
+dist/
+nbdist/
+nbactions.xml
+build.xml
+nb-configuration.xml
+generatorconf.xml
