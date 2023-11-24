@@ -1,0 +1,61 @@
+server:
+  port: 8080 # 服务端口号
+
+logging:
+  level:
+    root: warn #一般日志级别: error, warn, info, debug, trace
+    #    静默通知
+    com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean: INFO #mybatis-plus SQL执行日志: INFO级别
+
+spring:
+  main:
+    banner-mode: off # 关闭启动时的图标
+  
+  application:
+    name: sk_take_out # 应用名称
+  
+  #  数据库配置4要素
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/takeout?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 2333
+    #    连接池配置
+    type: com.alibaba.druid.pool.DruidDataSource
+  
+  #  热部署:
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java #重启目录
+      exclude: WEB-INF/**
+    livereload:
+      enabled: true
+  
+  thymeleaf:
+    cache: false #使用Thymeleaf模板引擎，关闭缓存
+  
+  jpa:
+    open-in-view: false #禁止延迟加载，避免出现懒加载异常
+
+
+
+mybatis-plus:
+  configuration:
+    
+    call-setters-on-nulls: true #查询结果为null时调用setter方法，防止字段为null时报错
+    map-underscore-to-camel-case: true #开启驼峰命名转换
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl #日志打印:取消Parsed-mapper-file日志打印
+  #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #控制台打印完整带参数SQL语句
+  
+  # 这里根据自己项目的包修改，扫描到自己的*xml文件
+  mapper-locations: classpath:mapper/*.xml
+
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+    banner: off #关闭mybatis-plus启动图标
+
+
+resources:
+  path: D:\img\ #图片存储路径
