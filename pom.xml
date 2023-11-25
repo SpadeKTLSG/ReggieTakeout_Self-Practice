@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.tlsg</groupId>
     <artifactId>sk_take_out</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0SNAPSHOT</version>
     <name>sk_take_out</name>
     <description>sk_take_out</description>
 
@@ -20,36 +20,47 @@
 
     <dependencies>
 
+        <!--springboot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!--Java持久化规范-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--MYBATIS-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>3.0.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.83</version>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.3.1</version>
         </dependency>
+
+        <!--MYSQL-->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
         </dependency>
+
+        <!--德鲁伊-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.23</version>
+        </dependency>
+
+
+        <!--测试-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -61,23 +72,29 @@
             <version>3.0.2</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.23</version>
-        </dependency>
+
+        <!--工具包-->
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
         </dependency>
+
+        <!--JSON-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <scope>provided</scope>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.83</version>
         </dependency>
 
-        <!-- 引入DevTools热部署 -->
+        <!--LOMBOK-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!--DevTools热部署-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -102,13 +119,11 @@
             <version>2.1.0</version>
         </dependency>
 
-        <!--性能调优: Redis 缓存-->
-
+        <!--Redis-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
@@ -121,19 +136,41 @@
             <version>4.0.0-RC1</version>
         </dependency>
 
-        <!--Swagger- Knife4j-->
+        <!--Swagger - Knife4j-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
             <version>3.0.2</version>
         </dependency>
 
+        <!--   手机验证码的替代-邮箱验证码     -->
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <!--        -->
+
     </dependencies>
 
     <!--build放在</dependencies>标签的后面，主要加入的是resources标签 -->
     <!--resources标签可以告诉系统启动的时候能够读取到这些后缀的文件 -->
     <build>
+        <!--插件-->
         <plugins>
+            <!--SpringBoot-->
+            <!--Lombok-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -150,7 +187,11 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <!--资源-->
         <resources>
+
+            <!--配置文件-->
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
@@ -160,18 +201,16 @@
                 </includes>
                 <filtering>true</filtering>
             </resource>
+
+            <!--前端资源-->
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
-                    <include>**.*</include>
-                    <include>**/*.yml</include>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
                     <include>static/**</include>
-                    <!--                    给我tm的全部打包进来-->
                 </includes>
-                <filtering>false</filtering>
             </resource>
+
+            <!--JAR包-->
             <resource>
                 <directory>lib</directory>
                 <includes>
