@@ -53,8 +53,9 @@ spring:
   shardingsphere: #分库分表配置
     datasource: #本地虚拟机数据库配置
       names:
-        master,slave
+        master,slave #只是名字
       
+      #TODO 自己的数据库配置
       # 主数据源
       master:
         type: com.alibaba.druid.pool.DruidDataSource

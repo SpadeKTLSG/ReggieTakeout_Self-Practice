@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.tlsg.takeout.common.R;
 import com.tlsg.takeout.entity.User;
 import com.tlsg.takeout.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -106,10 +107,17 @@ public class UserController {
             //如果用户登录成功，删除Redis中缓存的验证码
             redisTemplate.delete(phone);
 
-            
+
             return R.success(user);
         }
         return R.error("登录失败");
+    }
+
+    //登出
+    @PostMapping("/loginout")
+    public R<String> logout(HttpServletRequest request) {
+        request.getSession().removeAttribute("user");
+        return R.success("退出成功");
     }
 
 

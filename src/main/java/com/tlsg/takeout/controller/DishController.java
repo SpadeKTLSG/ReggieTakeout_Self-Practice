@@ -1,7 +1,9 @@
 package com.tlsg.takeout.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tlsg.takeout.common.CustomException;
 import com.tlsg.takeout.common.R;
 import com.tlsg.takeout.dto.DishDto;
 import com.tlsg.takeout.entity.Category;
@@ -137,6 +139,22 @@ public class DishController {
         return R.success("菜品信息删除成功");
     }
 
+    //大佬制作的通用删除
+    @DeleteMapping
+    public R<String> delete(@RequestParam List<Long> ids) {
+        log.info("删除的ids：{}", ids);
+        LambdaQueryWrapper<Dish> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.in(Dish::getId, ids);
+        queryWrapper.eq(Dish::getStatus, 1);
+        int count = (int) dishService.count(queryWrapper);
+        if (count > 0) {
+            throw new CustomException("删除列表中存在启售状态商品，无法删除");
+        }
+        dishService.removeByIds(ids);
+        return R.success("删除成功");
+    }
+
+    
     //条件查询对应的菜品数据, 注意停止售卖的菜品不应该被查询出来
     //扩充了前台的功能，根据菜品分类id查询对应的菜品数据
     @GetMapping("/list")
@@ -199,5 +217,29 @@ public class DishController {
         return R.success(dishDtoList);
     }
 
+    //菜品起售停售
+    @PostMapping("/status/{status}")
+    public R<String> status(@PathVariable Integer status, Long ids) {
+        log.info("status:{},ids:{}", status, ids);
+        Dish dish = dishService.getById(ids);
+        if (dish != null) {
+            //直接用它传进来的这个status改就行
+            dish.setStatus(status);
+            dishService.updateById(dish);
+            return R.success("售卖状态修改成功");
+        }
+        return R.error("系统繁忙，请稍后再试");
+    }
+
+    //菜品批量启售/停售
+    @PostMapping("/status/{status}")
+    public R<String> status(@PathVariable Integer status, @RequestParam List<Long> ids) {
+        log.info("status:{},ids:{}", status, ids);
+        LambdaUpdateWrapper<Dish> updateWrapper = new LambdaUpdateWrapper<>();
+        updateWrapper.in(ids != null, Dish::getId, ids);
+        updateWrapper.set(Dish::getStatus, status);
+        dishService.update(updateWrapper);
+        return R.success("批量操作成功");
+    }
 
 }

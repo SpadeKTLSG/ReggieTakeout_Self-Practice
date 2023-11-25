@@ -121,6 +121,13 @@
             <version>4.0.0-RC1</version>
         </dependency>
 
+        <!--Swagger- Knife4j-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
     </dependencies>
 
     <!--build放在</dependencies>标签的后面，主要加入的是resources标签 -->
