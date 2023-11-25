@@ -37,6 +37,17 @@ spring:
   
   jpa:
     open-in-view: false #禁止延迟加载，避免出现懒加载异常
+  
+  cache:
+    redis: #Redis配置 TODO
+      time-to-live: 1800000 #设置缓存数据的过期时间
+  
+  data:
+    redis: #Redis配置 TODO
+      host: 172.17.2.94
+      password: root@123456
+      database: 0
+      port: 6379
 
 
 
