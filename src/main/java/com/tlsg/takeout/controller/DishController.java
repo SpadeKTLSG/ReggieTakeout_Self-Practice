@@ -33,7 +33,6 @@ public class DishController {
     private DishFlavorService dishFlavorService;
     @Autowired
     private CategoryService categoryService;
-
     @Autowired
     private RedisTemplate redisTemplate; //加入菜品缓存
 
@@ -154,7 +153,7 @@ public class DishController {
         return R.success("删除成功");
     }
 
-    
+
     //条件查询对应的菜品数据, 注意停止售卖的菜品不应该被查询出来
     //扩充了前台的功能，根据菜品分类id查询对应的菜品数据
     @GetMapping("/list")

@@ -24,7 +24,7 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
-    //11.22员工登录demo: 前端传入username和password, 后端返回登录成功或失败, JSON格式
+    //2023.11.22员工登录demo: 前端传入username和password, 后端返回登录成功或失败, JSON格式
     @PostMapping("/login")
     public R<Employee> login(HttpServletRequest request, @RequestBody Employee employee) {//还需要一个Request对象来处理Session的内容方便后续登录
 
@@ -112,10 +112,8 @@ public class EmployeeController {
         queryWrapper.orderByDesc(Employee::getUpdateTime);
 
         //执行查询
-
         employeeService.page(pageInfo, queryWrapper);
-
-
+        
         return R.success(pageInfo);
     }
     //http://localhost:8080/employee/page?page=1&pageSize=10&name=张三

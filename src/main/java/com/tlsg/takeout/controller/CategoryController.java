@@ -43,7 +43,7 @@ public class CategoryController {
         return R.success(pageInfo);
     }
 
-    //自定义删除
+    //id删除
     //BUG记录: 参数必须是ids才能接收(后端JS写的)
     @DeleteMapping
     public R<String> delete(Long ids) {

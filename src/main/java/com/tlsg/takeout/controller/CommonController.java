@@ -87,7 +87,7 @@ public class CommonController {
 //            e.printStackTrace();
             //忽略掉控制台打印
 //            log.error("SK文件下载失败: {}", e.getMessage());
-//            log.info("静默通知: 图片无法显示");
+            log.info("静默通知: 图片无法显示");
             //donothing.
         }
 
