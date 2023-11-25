@@ -20,7 +20,7 @@ spring:
     url: jdbc:mysql://localhost:3306/takeout?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: 2333
-    #    连接池配置
+    #    连接池配置(与旧版本不同)
     type: com.alibaba.druid.pool.DruidDataSource
   
   #  热部署:
@@ -39,11 +39,11 @@ spring:
     open-in-view: false #禁止延迟加载，避免出现懒加载异常
   
   cache:
-    redis: #Redis配置 TODO
-      time-to-live: 1800000 #设置缓存数据的过期时间
+    redis: #Redis配置(与旧版本不同) TODO
+      time-to-live: 1800000 #设置缓存数据的过期时间=30min(不必要)
   
   data:
-    redis: #Redis配置 TODO
+    redis: #Redis配置(与旧版本不同) TODO
       host: 172.17.2.94
       password: root@123456
       database: 0
