@@ -40,11 +40,11 @@ spring:
     open-in-view: false #禁止延迟加载，避免出现懒加载异常
   
   cache:
-    redis: #Redis配置(与旧版本不同) TODO
+    redis: #Redis配置(与旧版本不同) TODO FIXIT
       time-to-live: 1800000 #设置缓存数据的过期时间=30min(不必要)
   
   data:
-    redis: #Redis配置(与旧版本不同) TODO
+    redis: #Redis配置(与旧版本不同) TODO FIXIT
       host: 172.17.2.94
       password: root@123456
       database: 0

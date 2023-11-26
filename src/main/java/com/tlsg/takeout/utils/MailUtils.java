@@ -12,11 +12,11 @@ import java.util.*;
 public class MailUtils {
 //    public static void main(String[] args) throws MessagingException {
 //        //可以在这里直接测试方法，填自己的邮箱即可
-//        sendTestMail("2429366986@qq.com", new MailUtils().achieveCode());
+//        sendTestMail("", new MailUtils().achieveCode()); FIXME: 此处填写自己的邮箱
 //    }
 
     public static void sendTestMail(String email, String code) throws MessagingException {
-        // 创建Properties 类用于记录邮箱的一些属性
+        // 创建Properties 类用于记录邮箱的一些属性 //FIXME: 此处填写自己的
         Properties props = new Properties();
         // 表示SMTP发送邮件，必须进行身份验证
         props.put("mail.smtp.auth", "true");
@@ -25,7 +25,7 @@ public class MailUtils {
         //端口号，QQ邮箱端口587
         props.put("mail.smtp.port", "587");
         // 此处填写，写信人的账号
-        props.put("mail.user", "2429366986@qq.com");
+        props.put("mail.user", "XXX"); //FIXME: 此处填写自己的邮箱
         // 此处填写16位STMP口令
         props.put("mail.password", "tnpXXXXXXXXjb");
         // 构建授权信息，用于进行SMTP进行身份验证
