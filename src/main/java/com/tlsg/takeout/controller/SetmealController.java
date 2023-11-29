@@ -14,8 +14,6 @@ import com.tlsg.takeout.service.CategoryService;
 import com.tlsg.takeout.service.DishService;
 import com.tlsg.takeout.service.SetmealDishService;
 import com.tlsg.takeout.service.SetmealService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -31,7 +29,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/setmeal")
 @Slf4j
-@Api(tags = "套餐相关接口")
 public class SetmealController {
 
     @Autowired
@@ -50,7 +47,6 @@ public class SetmealController {
     //使用缓存清除
     @CacheEvict(value = "setmealCache", allEntries = true)//
     @PostMapping
-    @ApiOperation(value = "新增套餐接口")
     public R<String> save(@RequestBody SetmealDto setmealDto) {
         log.info("套餐信息：{}", setmealDto);
 
@@ -62,7 +58,6 @@ public class SetmealController {
 
     //套餐分页查询
     @GetMapping("/page")
-    @ApiOperation(value = "套餐分页查询接口")
     public R<Page> page(int page, int pageSize, String name) {
         //分页构造器对象
         Page<Setmeal> pageInfo = new Page<>(page, pageSize);
@@ -110,7 +105,6 @@ public class SetmealController {
     //使用缓存清除
     @CacheEvict(value = "setmealCache", allEntries = true)
     @DeleteMapping
-    @ApiOperation(value = "套餐删除接口")
     public R<String> delete(@RequestParam List<Long> ids) {
         log.info("ids:{}", ids);
 
@@ -123,7 +117,6 @@ public class SetmealController {
     //使用缓存优化
     @Cacheable(value = "setmealCache", key = "#setmeal.categoryId + '_' + #setmeal.status")
     @GetMapping("/list")
-    @ApiOperation(value = "套餐条件查询接口")
     public R<List<Setmeal>> list(Setmeal setmeal) {
         log.info("setmeal:{}", setmeal);
         //条件构造器
@@ -138,7 +131,6 @@ public class SetmealController {
 
     //图片点击放大显示
     @GetMapping("/dish/{id}")
-    @ApiOperation(value = "套餐图片点击方法接口")
     public R<List<DishDto>> showSetmealDish(@PathVariable Long id) {
         //条件构造器
         LambdaQueryWrapper<SetmealDish> dishLambdaQueryWrapper = new LambdaQueryWrapper<>();
@@ -164,7 +156,6 @@ public class SetmealController {
 
     //套餐批量起售停售
     @PostMapping("/status/{status}")
-    @ApiOperation(value = "套餐其他接口")
     public R<String> status(@PathVariable String status, @RequestParam List<Long> ids) {
         LambdaUpdateWrapper<Setmeal> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.in(Setmeal::getId, ids);
@@ -176,7 +167,6 @@ public class SetmealController {
 
     //数据回显
     @GetMapping("/{id}")
-    @ApiOperation(value = "套餐其他接口")
     public R<SetmealDto> getById(@PathVariable Long id) {
         Setmeal setmeal = setmealService.getById(id);
         SetmealDto setmealDto = new SetmealDto();
@@ -196,7 +186,6 @@ public class SetmealController {
 
     //套餐修改
     @PutMapping
-    @ApiOperation(value = "套餐其他接口")
     public R<Setmeal> updateWithDish(@RequestBody SetmealDto setmealDto) {
         List<SetmealDish> setmealDishes = setmealDto.getSetmealDishes();
         Long setmealId = setmealDto.getId();

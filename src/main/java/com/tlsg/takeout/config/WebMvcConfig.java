@@ -1,6 +1,5 @@
 package com.tlsg.takeout.config;
 
-import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import com.tlsg.takeout.common.JacksonObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -9,20 +8,14 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 
 import java.util.List;
 
 @Configuration
 @Slf4j
-@EnableSwagger2
-@EnableKnife4j
+//@EnableSwagger2
+//@EnableKnife4j
 public class WebMvcConfig extends WebMvcConfigurationSupport {
     //存储静态资源的映射路径变量
     static final String BACKEND_RESOURCE = System.getProperty("user.dir") + "/src/main/resources/static/backend/";
@@ -55,7 +48,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         converters.add(0, messageConverter); //0表示在第一个位置添加
     }
 
-    //配置Swagger2
+  /*  //配置Swagger2
     @Bean
     public Docket createRestApi() {
         // 文档类型
@@ -73,5 +66,5 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
                 .version("1.0")
                 .description("瑞吉外卖接口文档")
                 .build();
-    }
+    }*/
 }

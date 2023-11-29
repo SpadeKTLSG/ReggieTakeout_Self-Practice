@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 @Slf4j
@@ -14,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableTransactionManagement
 @EnableCaching //开启Spring Cache注解方式缓存功能
-@EnableSwagger2  //开启Swagger2, 习惯了写一下(配置类已经写了)
+//@EnableSwagger2  //开启Swagger2, 习惯了写一下(配置类已经写了)
 public class SkTakeOutApplication {
 
     public static void main(String[] args) {

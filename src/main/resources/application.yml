@@ -14,15 +14,51 @@ spring:
   
   application:
     name: sk_take_out # 应用名称
-  
-  #  #  本地数据库配置4要素 名字: takeout
-  #  datasource:
-  #    driver-class-name: com.mysql.cj.jdbc.Driver
-  #    url: jdbc:mysql://localhost:3306/takeout?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
-  #    username: root
-  #    password: 2333
-  #    #    连接池配置(与旧版本不同)
-  #    type: com.alibaba.druid.pool.DruidDataSource
+
+  shardingsphere: #分库分表配置
+    datasource: #本地虚拟机数据库配置
+      names:
+        master,slave #只是名字
+
+      # 主数据源
+      master:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.91.129:3306/takeout?characterEncoding=utf-8
+        username: root
+        password: 2333
+
+      # 从数据源
+      slave:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.91.130:3306/takeout?characterEncoding=utf-8
+        username: root
+        password: 2333
+
+    masterslave:
+      # 读写分离配置
+      load-balance-algorithm-type: round_robin #轮询
+      # 最终的数据源名称
+      name: dataSource
+      # 主库数据源名称
+      master-data-source-name: master
+      # 从库数据源名称列表，多个逗号分隔
+      slave-data-source-names: slave
+
+    props:
+      sql:
+        show: true #开启SQL显示，默认false
+
+
+    #  本地数据库配置4要素 名字: takeout
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/takeout?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 2333
+    #    连接池配置(与旧版本不同)
+    type: com.alibaba.druid.pool.DruidDataSource
   
   #  热部署:
   devtools:
@@ -49,41 +85,7 @@ spring:
       password: root@2333
       database: 0
       port: 6379
-  
-  shardingsphere: #分库分表配置
-    datasource: #本地虚拟机数据库配置
-      names:
-        master,slave #只是名字
 
-      # 主数据源
-      master:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.91.129:3306/takeout?characterEncoding=utf-8
-        username: root
-        password: 2333
-      
-      # 从数据源
-      slave:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.91.130:3306/takeout?characterEncoding=utf-8
-        username: root
-        password: 2333
-    
-    masterslave:
-      # 读写分离配置
-      load-balance-algorithm-type: round_robin #轮询
-      # 最终的数据源名称
-      name: dataSource
-      # 主库数据源名称
-      master-data-source-name: master
-      # 从库数据源名称列表，多个逗号分隔
-      slave-data-source-names: slave
-    
-    props:
-      sql:
-        show: true #开启SQL显示，默认false
 
 
 

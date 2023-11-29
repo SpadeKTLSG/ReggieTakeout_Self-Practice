@@ -137,28 +137,31 @@
         </dependency>
 
         <!--Swagger - Knife4j-->
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>3.0.2</version>
-        </dependency>
+        <!--        高版本报错, 不用了, 之后我用OpenAPI-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>com.github.xiaoymin</groupId>-->
+        <!--            <artifactId>knife4j-spring-boot-starter</artifactId>-->
+        <!--            <version>3.0.2</version>-->
+        <!--        </dependency>-->
 
         <!--   手机验证码的替代-邮箱验证码     -->
-        <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-email</artifactId>
-            <version>1.4</version>
-        </dependency>
+        <!--        可以开启调试-->
+        <!--        <dependency>-->
+        <!--            <groupId>javax.activation</groupId>-->
+        <!--            <artifactId>activation</artifactId>-->
+        <!--            <version>1.1.1</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>javax.mail</groupId>-->
+        <!--            <artifactId>mail</artifactId>-->
+        <!--            <version>1.4.7</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.commons</groupId>-->
+        <!--            <artifactId>commons-email</artifactId>-->
+        <!--            <version>1.4</version>-->
+        <!--        </dependency>-->
 
         <!--        -->
 
@@ -194,6 +197,15 @@
             <!--配置文件-->
             <resource>
                 <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*.yml</include>
                     <include>**/*.properties</include>

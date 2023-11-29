@@ -102,16 +102,6 @@ public class AddressBookController {
         return R.success(addressBookService.list(queryWrapper));
     }
 
-    //数据回显: 地址选项卡铅笔选项
-    @GetMapping("/{id}")
-    public R<AddressBook> getById(@PathVariable Long id) {
-        AddressBook addressBook = addressBookService.getById(id);
-        if (addressBook == null) {
-            throw new CustomException("地址信息不存在");
-        }
-        return R.success(addressBook);
-    }
-
     //修改地址
     @PutMapping
     public R<String> updateAdd(@RequestBody AddressBook addressBook) {

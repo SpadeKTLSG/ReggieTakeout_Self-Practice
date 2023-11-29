@@ -2,18 +2,13 @@ package com.tlsg.takeout.utils;
 
 import lombok.extern.slf4j.Slf4j;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMessage.RecipientType;
-import java.util.*;
-
 @Slf4j
 public class MailUtils {
 //    public static void main(String[] args) throws MessagingException {
 //        //可以在这里直接测试方法，填自己的邮箱即可
 //        sendTestMail("", new MailUtils().achieveCode()); FIXME: 此处填写自己的邮箱
 //    }
+/*
 
     public static void sendTestMail(String email, String code) throws MessagingException {
         // 创建Properties 类用于记录邮箱的一些属性 //FIXME: 此处填写自己的
@@ -68,6 +63,7 @@ public class MailUtils {
         }
         return sb.substring(3, 8);
     }
+*/
 
 
 }
