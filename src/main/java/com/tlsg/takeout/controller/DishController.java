@@ -127,16 +127,16 @@ public class DishController {
     }
 
     //删除菜品信息(自制)
-    @DeleteMapping
-    public R<String> delete(Long ids) {
-        if (ids == null)
-            return R.error("删除菜品失败，id不能为空");
-
-        log.info("删除菜品，id为：{}", ids);
-        dishService.removeById(ids);
-
-        return R.success("菜品信息删除成功");
-    }
+//    @DeleteMapping
+//    public R<String> delete(Long ids) {
+//        if (ids == null)
+//            return R.error("删除菜品失败，id不能为空");
+//
+//        log.info("删除菜品，id为：{}", ids);
+//        dishService.removeById(ids);
+//
+//        return R.success("菜品信息删除成功");
+//    }
 
     //大佬制作的通用删除
     @DeleteMapping
@@ -217,18 +217,18 @@ public class DishController {
     }
 
     //菜品起售停售
-    @PostMapping("/status/{status}")
-    public R<String> status(@PathVariable Integer status, Long ids) {
-        log.info("status:{},ids:{}", status, ids);
-        Dish dish = dishService.getById(ids);
-        if (dish != null) {
-            //直接用它传进来的这个status改就行
-            dish.setStatus(status);
-            dishService.updateById(dish);
-            return R.success("售卖状态修改成功");
-        }
-        return R.error("系统繁忙，请稍后再试");
-    }
+//    @PostMapping("/status/{status}")
+//    public R<String> status(@PathVariable Integer status, Long ids) {
+//        log.info("status:{},ids:{}", status, ids);
+//        Dish dish = dishService.getById(ids);
+//        if (dish != null) {
+//            //直接用它传进来的这个status改就行
+//            dish.setStatus(status);
+//            dishService.updateById(dish);
+//            return R.success("售卖状态修改成功");
+//        }
+//        return R.error("系统繁忙，请稍后再试");
+//    }
 
     //菜品批量启售/停售
     @PostMapping("/status/{status}")

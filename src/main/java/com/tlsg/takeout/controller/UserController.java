@@ -82,7 +82,7 @@ public class UserController {
 
         //从Redis中获取缓存的验证码
         Object codeInSession = redisTemplate.opsForValue().get(phone);
-
+//        Object codeInSession = "2333";
 
         //进行验证码的比对（页面提交的验证码和Session中保存的验证码比对）
         if (codeInSession != null && codeInSession.equals(code)) {
