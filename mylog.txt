@@ -11,20 +11,34 @@
 3天,差不多总共24小时的工时就可以了.
 余下的记录在笔记本之后参考部署
 
-### 项目结构 ###
+Pause reason : VMware Fail! MYSQL kept screaming!
 
+I can't stand it any more...
+
+So I push the delete button to sentence its death...
+
+---
+
+11.29
+
+我又回来了, 虽然发烧了但是工作仍要继续
+我找到问题的根源了, 我的一个VMware服务项被自己禁用掉了(8月份误操作)
+导致连接出问题
+
+于是又把打包好的工程拆开, 然后建立Master机环境
+
+
+
+### 项目结构 ###
+TODO
 
 
 ### 项目部署 ###
+TODO
 
 
 ### 项目总结 ###
-TODO: 2024.1 准备进行提升篇的重学以及部署
-2023, 25-Nov 暂时的停滞, 1月份回去后再继续
-项目保持本地后备里面, 以及Github上面.
+TODO
 
-### 项目参考 ###
-[1] [
 
-FIXIT
 

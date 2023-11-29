@@ -3,11 +3,8 @@
 
 BlackHorse ReggieTakeout self practice (local only)
 
-MORE Details -> gimme some time plz
+MORE Details -> gimme some time plz TODO
 
-# 练习暂停 Mission Suspend()  -> 2024.1 TO BE CONTINUE
-Pause reason : VMware Fail! MYSQL kept screaming!
+# 练习中
 
-I can't stand it any more...
 
-So I push the delete button to sentence its death...
