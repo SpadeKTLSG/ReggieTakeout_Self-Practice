@@ -30,7 +30,7 @@ public class UserController {
     private RedisTemplate redisTemplate;//Redis
 
 
-    //这里无法使用阿里云的短信服务
+    //! 这里本人无法使用阿里云的短信服务
     //移动端用户
     @PostMapping("/sendMsg")
     public R<String> sendMsg(@RequestBody User user, HttpSession session) {
@@ -77,13 +77,11 @@ public class UserController {
 
         //从Session中获取保存的验证码
 //        Object codeInSession = session.getAttribute(phone);
+//        codeInSession = "2333"; //这边由于前端接口问题, Session传递有问题, 因此直接写死为2333
+
 
         //从Redis中获取缓存的验证码
         Object codeInSession = redisTemplate.opsForValue().get(phone);
-
-
-        //这边由于前端接口问题, Session传递有问题, 因此直接写死为2333
-        codeInSession = "2333";
 
 
         //进行验证码的比对（页面提交的验证码和Session中保存的验证码比对）
@@ -115,7 +113,7 @@ public class UserController {
 
 
     //大佬写的邮箱平替, 需要MainUtils工具类
-/*    @PostMapping("/sendMsg")
+    /*    @PostMapping("/sendMsg")
     public R<String> sendMsg(@RequestBody User user, HttpSession session) throws MessagingException {
         String phone = user.getPhone();
         if (!phone.isEmpty()) {

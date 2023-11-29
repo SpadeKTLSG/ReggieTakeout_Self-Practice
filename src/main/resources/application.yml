@@ -15,14 +15,14 @@ spring:
   application:
     name: sk_take_out # 应用名称
   
-  #  数据库配置4要素
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/takeout?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
-    username: root
-    password: 2333
-    #    连接池配置(与旧版本不同)
-    type: com.alibaba.druid.pool.DruidDataSource
+  #  #  本地数据库配置4要素 名字: takeout
+  #  datasource:
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
+  #    url: jdbc:mysql://localhost:3306/takeout?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+  #    username: root
+  #    password: 2333
+  #    #    连接池配置(与旧版本不同)
+  #    type: com.alibaba.druid.pool.DruidDataSource
   
   #  热部署:
   devtools:
@@ -54,13 +54,12 @@ spring:
     datasource: #本地虚拟机数据库配置
       names:
         master,slave #只是名字
-      
-      #TODO 自己的数据库配置
+
       # 主数据源
       master:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.138.100:3306/reggie?characterEncoding=utf-8
+        url: jdbc:mysql://192.168.91.129:3306/takeout?characterEncoding=utf-8
         username: root
         password: 2333
       
@@ -68,7 +67,7 @@ spring:
       slave:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.138.101:3306/reggie?characterEncoding=utf-8
+        url: jdbc:mysql://192.168.91.130:3306/takeout?characterEncoding=utf-8
         username: root
         password: 2333
     
