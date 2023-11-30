@@ -3,10 +3,8 @@
 
 BlackHorse ReggieTakeout self practice
 
-任务完成, 脱离中...
 
-MORE Details -> gimme some time plz TODO
 
-# 善后中 Sleeping...
+
 
 
